@@ -11,11 +11,10 @@ let timer,
     timeLeft = maxTime,
     charIndex = mistakes = isTyping = 0;
 
-const loadParagraph = async () => {
-    const response = await fetch('http://metaphorpsum.com/sentences/9');
-    const data = await response.text();
+function loadParagraph() {
+    const ranIndex = Math.floor(Math.random() * paragraphs.length);
     typingText.innerHTML = "";
-    data.split("").forEach(char => {
+    paragraphs[ranIndex].split("").forEach(char => {
         let span = `<span>${char}</span>`
         typingText.innerHTML += span;
     });
